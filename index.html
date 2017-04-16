@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simple simon says</title>
+  </head>
+  <style media="screen">
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: content-box;
+      }
+      .row {
+        max-width: 1140px;
+      }
+
+      .header {
+        width: 800px;
+      }
+      .content {
+        max-width: 1000px;
+      }
+      .box1, .box2, .box3, .box4, .box5, .box6, .box7, .box8, .box9{
+        width: 50px;
+        height: 50px;
+        border: solid 1px #000;
+        margin: 10px;
+        display: inline-block;
+        background-color: #000;
+      }
+  </style>
+  <body>
+      <div class="row">
+        <header class="header">
+          <div class="title">
+            <h2>Simple Simon Says</h2>
+          </div>
+          <div class="btn">
+            <button type="button" class="clickme">Click Me</button>
+          </div>
+        </header>
+        <section class="content">
+          <div class="box1"></div>
+          <div class="box2"></div>
+          <div class="box3"></div>
+          <div class="box4"></div>
+          <div class="box5"></div>
+          <div class="box6"></div>
+          <div class="box7"></div>
+          <div class="box8"></div>
+          <div class="box9"></div>
+        </section>
+      </div>
+      <script type="text/javascript">
+
+        $(".clickme").on("click", () => {
+          // let random = randomNumber()
+          // alert(random.number+" - "+random.color)
+          $.ajax({
+            method: "POST",
+            url: "./controllers/random_controller.js",
+            data: { req: "request" },
+            success: (data) => {
+              alert(data)
+            }
+          })
+        })
+
+      </script>
+    </body>
+</html>
